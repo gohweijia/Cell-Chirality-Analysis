@@ -1,15 +1,21 @@
+/*
+This macro will split image stacks containing multiple channels into a folder based on file index (eg. 0001, 0002, ...), 
+The folder will contain actin, nucleus and 3rd channel folders (if required).
+
+
+Image files should be in TIFF format and start with a 4 digit file index. 
+*/
 filelist = newArray(
 	"/Volumes/WJ/perkin_elmer_exports/all_live_data/05Jul19_GFP-Actn4_45min/",
 	"/Volumes/WJ/perkin_elmer_exports/all_live_data/05Jul19_GFP-Actn4_45min2/"	
 );
 
-
-var num_channels = 1;
-var start_index = 0;
+var num_channels = 1;  //  Total number of channels.
+var start_index = 1;  //  File index to begin splitting. (1 will start from 0001)
 
 // if multiple channels exist
 var save_nucleus = true;
-var save_third_channel = true;
+var save_third_channel = true;  
 
 var actin_num = 2;  // index of actin in multi-channel tif
 var nucleus_num = 3;
@@ -17,9 +23,6 @@ var third_channel_num = 1;
 var third_channel_save_name = "GFP";
 
 setBatchMode(true);
-
-
-
 for (file_index = 0; file_index < filelist.length; file_index++) {
    	dir = filelist[file_index];
    	print("Running: ", dir);
@@ -28,7 +31,7 @@ for (file_index = 0; file_index < filelist.length; file_index++) {
 
 function split_files(dir) {
 	file_list = getFileList(dir);
-	for (j = start_index; j<file_list.length; j++) {
+	for (j = start_index-1; j<file_list.length; j++) {
 		if (startsWith(file_list[j], "0")==1) {
 			if (endsWith(file_list[j], 'tif')==1) {
 				base_name = file_list[j];
@@ -65,14 +68,12 @@ function split_files(dir) {
 					actin_filename = base_name;
 				}
 				
-				//actin
 				selectWindow(actin_filename);
 				run("Enhance Contrast", "saturated=0.35");
 				run("8-bit");
 				run("Grays");
 				File.makeDirectory(save_dir + "actin");
 				run("Image Sequence... ", "format=TIFF start=1 save="+save_dir+"actin/");
-				//3rd channel
 				run("Close All");
 				//File.delete(file_name);
 			}	
