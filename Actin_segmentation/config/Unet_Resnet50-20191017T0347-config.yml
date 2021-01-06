@@ -1,0 +1,141 @@
+general:
+#### General settings ####
+  dataset_dir: /tf/Documents/model_training/Training_actin
+  model_dir: /tf/Documents/Unet/Networks/
+  image_subfolder: Images
+  ground_truth_subfolder: Masks
+
+  # CPU/GPU settings
+  visible_gpu: 3
+  use_cpu: false
+  for_prediction: false
+
+  #callbacks
+  reduce_LR_on_plateau: true
+  use_tensorboard: true
+  early_stopping: false
+
+  now: 2019-10-17 03:47:11.315077
+model:
+#### Model parameters ####
+  filters: 32 # convolution filters
+  levels: 4 # for unet 
+  num_epochs: 200
+  val_split: 0.1
+  batch_size_per_GPU: 4
+
+  optimizer:
+    optimizer_function: rmsprop
+    learning_rate: 0.0001
+    decay: 0
+    momentum: 0.9
+    nesterov: true
+
+  loss: bce_dice_loss    #binary_crossentropy' #'bce_dice_loss'
+  metrics:
+  - binary_accuracy
+  dropout_value: 0.5
+  weight_regularizer: 0
+
+  initializer: he_normal
+  activation:
+    activation_function: relu
+    final_activation: sigmoid   #'relu'
+  padding: same
+  input_size:
+  - 256
+  - 256
+  - 1
+  batch_size: 4
+  name: Unet_Resnet50
+  bottleneck_block:
+  - 3
+  - 4
+  - 6
+  - 3
+images:
+#### Image/Ground truth settings ####
+  tile_size: [256, 256] # h,w
+  tile_overlap_size: [0, 0]
+  image_channel: 1
+  invert_ground_truth: false
+  use_binary_erosion: false
+  use_binary_dilation: false
+  use_binary_dilation_after_augmentation: false
+  disk_size: 1
+
+  # image normalization during dataset loading
+  percentile_normalization: true
+  percentile: [3, 99.8]
+  # patch normalization during test time
+  scale_input: false
+  mean_std_normalization: false
+  mean: 0.3261201368276706
+  std: 0.2352922733949071
+
+augmentation:
+#### Image augmentations settings ####
+  augmentation_library: albumentations
+  num_augmented_images: 1000
+  augmentations_p: 0.9
+
+  random_rotate: true
+  random_rotate_p: 0.9
+
+  flip: true
+  transpose: true
+
+  blur_group: true
+  blur_group_p: 0.3
+
+  motion_blur: false
+  motion_blur_p: 0.1
+  median_blur: false
+  median_blur_limit: 3
+  median_blur_p: 0.3
+  blur: true
+  blur_limit: 3
+  blur_p: 0.3
+
+  shift_scale_rotate: true
+  shift_scale_rotate_p: 0.3
+  shift_limit: 0.0625
+  scale_limit: 0.5
+  rotate_limit: 45
+
+  distortion_group: true
+  distortion_group_p: 0.2
+  optical_distortion: true
+  optical_distortion_p: 0.3
+  elastic_transform: true
+  elastic_transform_p: 0.3
+  grid_distortion: true
+  grid_distortion_p: 0.3
+
+  brightness_contrast_group: false
+  brightness_contrast_group_p: 0.3
+  clahe: false
+  sharpen: false
+  random_brightness_contrast: false
+
+callbacks:
+#### Callback settings ####
+  # Tensorboard settings
+  tensorboard:
+    write_graph: false
+    write_images: false
+    write_grads: false
+    histogram_freq: 0
+
+  reduceLR:
+  # Reduce LR on plateau settings
+    reduce_LR_monitor: val_loss
+    reduce_LR_patience: 10
+    reduce_LR_factor: 0.5
+    reduce_LR_min_lr: 0.000001
+
+  earlystopping:
+  # Early stopping settings
+    early_stopping_monitor: val_loss
+    early_stopping_pateince: 10
+    early_stopping_min_delta: 0
