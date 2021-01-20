@@ -35,7 +35,7 @@ cd Actin_segmentation  # Path is just an example
 conda create -n new_environment python=3.6  -y
 conda activate new_environment
 pip install -r requirements.txt
-conda install tensorflow=1.14.0 -y
+conda install tensorflow=1.14.0 --y
 ```
 
 Open actin_predict.ipynb using Jupyter Lab or Jupyter Notebook. 
