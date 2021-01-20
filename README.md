@@ -31,11 +31,17 @@ Segmentation of radial fibres using ResNet-50
 
 Install dependencies:
 ```
-cd Actin_segmentation
+cd Actin_segmentation  # Path is just an example
+conda create -n new_environment python=3.6  -y
+conda activate new_environment
 pip install -r requirements.txt
+conda install tensorflow=1.14.0 --y
 ```
 
 Open actin_predict.ipynb using Jupyter Lab or Jupyter Notebook. 
+```bash
+jupyter lab
+```
 Note: ensure that the pre-process steps have been completed. 
 ###  3.3. MATLAB analysis
 Code written by Ong Hui Ting. 

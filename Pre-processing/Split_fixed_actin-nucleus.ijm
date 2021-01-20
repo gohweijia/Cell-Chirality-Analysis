@@ -6,8 +6,7 @@ Macro will iterate over folders in root_dir. Change 'single_directory' to true t
 //  Variables to be changed
 var actin_index = 1;  // slice position of actin image
 var single_directory = false;  
-root_dir = "/Users/weijia/Documents/GitHub/Cell-Chirality-Analysis/Test_data/"; 
-//
+root_dir = getDir("Select root directory.");
 
 setBatchMode(true);
 if (actin_index == 1)
