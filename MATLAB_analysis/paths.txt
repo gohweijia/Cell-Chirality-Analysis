@@ -1,0 +1,10 @@
+%  Enter paths for MATLAB analysis here, separated by newline
+%  scratch/sesha: /mnt/mbi/images/sesha/
+%  home: /mnt/mbi/home
+
+
+
+/mnt/mbi/images/sesha/WJ/perkin_elmer_exports/all_live_data/Enucleated-cells-live/11May16_Enucleated_10min/
+/mnt/mbi/images/sesha/WJ/perkin_elmer_exports/all_live_data/Enucleated-cells-live/13May16_Enucleated-LatA_10min/
+/mnt/mbi/images/sesha/WJ/perkin_elmer_exports/all_live_data/Enucleated-cells-live/19Apr16_Enucleated_10min/
+/mnt/mbi/images/sesha/WJ/perkin_elmer_exports/all_live_data/Enucleated-cells-live/20Apr16_Enucleated_10min/
