@@ -1,4 +1,4 @@
-run_all = false;  % Change this to 'true' to re-run analysis for complete data
+skip_completed = true;  % Change this to 'false' to re-run analysis for complete data
 ncpus = feature('numcores')
 txt_path = 'paths.txt';
 paths = textread(txt_path,'%s','delimiter','\n');
