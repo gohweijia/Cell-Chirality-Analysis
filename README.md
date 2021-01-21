@@ -44,7 +44,33 @@ jupyter lab
 ```
 Note: ensure that the pre-process steps have been completed. 
 ###  3.3. MATLAB analysis
-Code written by Ong Hui Ting. 
+By default, the script run_analysis.m will skip folders that have already been processed. This behaviour can be changed by changing the 'run_all' variable to true. 
 
+To run the script, first change the paths in ```paths.txt```. 
+For example: 
+```MATLAB
+%  Enter paths for MATLAB analysis here, separated by newline
+
+../Test_data
+``` 
+Open matlab and execute ```run_all.m``` in terminal.
+The following example was run using a bash terminal. 
+```bash
+-bash-4.2$ matlab
+MATLAB is selecting SOFTWARE OPENGL rendering.
+
+                < M A T L A B (R) >
+        Copyright 1984-2020 The MathWorks, Inc.
+    R2020a Update 5 (9.8.0.1451342) 64-bit (glnxa64)
+                August 6, 2020
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+>> cd Matlab_analysis
+
+matlab -r run_all.m
+```
 
 ###  3.4. Post-processing and data extraction

@@ -1,22 +1,18 @@
-%  Put paths in cell array 'paths'. 
+run_all = false;  % Change this to 'true' to re-run analysis for complete data
 ncpus = feature('numcores')
-
-txt_path = "paths.txt"
+txt_path = 'paths.txt';
 paths = textread(txt_path,'%s','delimiter','\n');
-paths(ismember(paths,'')) = []  % Remove empty line
-paths(contains(paths,'%')) = []  % Remove comments
+paths(ismember(paths,'')) = [];  
+paths(contains(paths,'%')) = []; 
 
 global nb_thresh;
 global min_length_um;
 global pixel_size;
-pixel_size = 0.138502;            % micrometer
+pixel_size = 0.138502;          
 min_length_um = 1;
 nb_thresh = -0.2;
-%cluster1 = parcluster;
-
 
 job_list = {};
-
 for path_index = 1:length(paths)
     rootdir = paths{path_index};
     disp(rootdir);
@@ -24,20 +20,28 @@ for path_index = 1:length(paths)
     directories = directories(~contains({directories.name}, '.'));
     for file_index = 1:length(directories)
         pathname = fullfile(rootdir, directories(file_index).name)+ "/";
-        job_list{end+1} = pathname;
+        if ~exist(fullfile(pathname, 'actin', '14_18', 'Results.csv'))
+            job_list{end+1} = pathname;
+        end
     end
 end
 
-
+celldisp(job_list);
 cluster1 = parcluster;
-p1 = parpool(cluster1, ncpus);
-p1.IdleTimeout = 10000;
 for job_index = 1:length(job_list)
     job_path = job_list{job_index};
-    disp(job_path);
-    job(job_index) = batch(cluster1, 'analyse_folders', 1, {job_path});
-    if (mod(job_index, ncpus) == 0)
-        wait(job(job_index-1))
+    try
         job(job_index) = batch(cluster1, 'analyse_folders', 1, {job_path});
+        disp(sprintf("Submitted job %d: %s", job_index, job_path));
+    catch
+         warning("Error in job %d", job_index); 
+         disp(job(job_index));    
     end
 end
+
+%  Wait for all jobs to complete
+for job_index = 1:length(job_list)
+    wait(job(job_index), 'finished');
+end
+
+disp(job(job_index));
