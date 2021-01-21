@@ -3,7 +3,7 @@ Code used for publication
 
 Input images: 512 x 512 pixels images of single cells patterned on 1800µm<sup>2</sup> micro-patterns. 
 
-Code has been tested on MacOS and Windows 10
+Code has been tested on Windows 10 and CentOS 7 (Linux)
 
 ## 2. Installation
 [Fiji / ImageJ](https://imagej.net/Fiji/Downloads)
@@ -43,8 +43,9 @@ Open actin_predict.ipynb using Jupyter Lab or Jupyter Notebook.
 jupyter lab
 ```
 Note: ensure that the pre-process steps have been completed. 
+
 ###  3.3. MATLAB analysis
-By default, the script run_analysis.m will skip folders that have already been processed. This behaviour can be changed by changing the 'run_all' variable to true. 
+By default, the script run_analysis.m will skip folders that have already been processed. This behaviour can be changed by changing the 'skip_completed' variable to false. 
 
 To run the script, first change the paths in ```paths.txt```. 
 For example: 
@@ -70,7 +71,20 @@ For product information, visit www.mathworks.com.
  
 >> cd Matlab_analysis
 
-matlab -r run_all.m
+matlab -r run_all
+```
+This script works on MATLAB versions after 2018. 
+
+To check for completion of MATLAB analysis, check that ```matlab_log.txt``` in each of the data folders contains the following: 
+```
+0-2 completed
+2-4 completed
+4-6 completed
+6-8 completed
+8-10 completed
+10-12 completed
+12-14 completed
+14-16 completed
 ```
 
 ###  3.4. Post-processing and data extraction
