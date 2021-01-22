@@ -88,3 +88,6 @@ To check for completion of MATLAB analysis, check that ```matlab_log.txt``` in e
 ```
 
 ###  3.4. Post-processing and data extraction
+Change the variable ```rootdir``` in Cell 2, and the name of the output folder ```output_folder```. 
+
+This notebook will search the directory for folders on which the MATLAB analysis has been successfully completed. 
