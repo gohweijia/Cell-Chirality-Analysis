@@ -12,7 +12,8 @@ Code has been tested on Windows 10 and CentOS 7 (Linux)
 
 [MATLAB R2020a](https://www.mathworks.com/products/new_products/release2020a.html)
 
-[Test dataset](http://www.google.com/)  ***TODO***
+[CUDA](https://developer.nvidia.com/cuda-10.1-download-archive-base/) version 10.1
+
 
 ## 3. Running Image Analysis
 ### 3.1. Pre-processing
@@ -88,6 +89,4 @@ To check for completion of MATLAB analysis, check that ```matlab_log.txt``` in e
 ```
 
 ###  3.4. Post-processing and data extraction
-Change the variable ```rootdir``` in Cell 2, and the name of the output folder ```output_folder```. 
-
-This notebook will search the directory for folders on which the MATLAB analysis has been successfully completed. 
+Change the variable ```rootdir``` in Cell 2, and the name of the output folder ```output_folder```. This notebook will iteratively search for, and analyse folders on which the MATLAB analysis has been successfully completed. All data can be found in ```output_folder```.
