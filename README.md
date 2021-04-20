@@ -25,24 +25,27 @@ Splits live movies for each x-y position into a folder (eg. '0001/actin', '0002/
 
 **Fixed Images**
 
-Splits image stacks into folder labelled 'actin'. Converts images to 8-bit and enhance brightness/contrast.
+Splits image stacks into folder labelled 'actin'. Converts images to 8-bit and enhance brightness/contrast. For the included test images, the root directory should be "Test_data".
 
 ###  3.2. Actin Segmentation
 Segmentation of radial fibres using ResNet-50
 
 Install dependencies:
 ```
-cd Actin_segmentation  # Path is just an example
-conda create -n new_environment python=3.6  -y
+cd Actin_segmentation  # Path to Actin_segmentation folder
+conda create -n new_environment python=3.6  -y  
 conda activate new_environment
 pip install -r requirements.txt
 conda install tensorflow=1.14.0 --y
+python -m ipykernel install --user  --name new_environment --display-name "Cell-Chirality-Analysis"
+
 ```
 
-Open actin_predict.ipynb using Jupyter Lab or Jupyter Notebook. 
+Open and run actin_predict.ipynb using Jupyter Lab or Jupyter Notebook. 
 ```bash
 jupyter lab
 ```
+Proceed to select the kernel "Cell-Chirality-Analysis"
 Note: ensure that the pre-process steps have been completed. 
 
 ###  3.3. MATLAB analysis
