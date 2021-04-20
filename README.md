@@ -1,7 +1,7 @@
 ## 1. Introduction
-Code used for publication
+Code used for publication in "Actin polymerization and crosslinking drive individual and collective cell left-right asymmetry". 
 
-Input images: 512 x 512 pixels images of single cells patterned on 1800µm<sup>2</sup> micro-patterns. 
+Input images: 512 x 512 pixel images of single cells patterned on 1800µm<sup>2</sup> micro-patterns. 
 
 Code has been tested on Windows 10 and CentOS 7 (Linux)
 
@@ -12,7 +12,7 @@ Code has been tested on Windows 10 and CentOS 7 (Linux)
 
 [MATLAB R2020a](https://www.mathworks.com/products/new_products/release2020a.html)
 
-[CUDA](https://developer.nvidia.com/cuda-10.1-download-archive-base/) version 10.1
+[CUDA](https://developer.nvidia.com/cuda-10.1-download-archive-base/) version 10.1 (Optional)
 
 
 ## 3. Running Image Analysis
