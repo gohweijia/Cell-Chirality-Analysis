@@ -36,7 +36,7 @@ cd Actin_segmentation  # Path to Actin_segmentation folder
 conda create -n new_environment python=3.6  -y  
 conda activate new_environment
 pip install -r requirements.txt
-conda install tensorflow=1.14.0 --y
+conda install tensorflow=1.14.0 ipykernel --y
 python -m ipykernel install --user  --name new_environment --display-name "Cell-Chirality-Analysis"
 
 ```
