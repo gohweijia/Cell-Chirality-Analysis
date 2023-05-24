@@ -1,5 +1,7 @@
 ## 1. Introduction
-Code used for publication in "Actin polymerization and crosslinking drive individual and collective cell left-right asymmetry". 
+Code used for publication in:
+Tee, Y.H., Goh, W.J., Yong, X. et al. Actin polymerisation and crosslinking drive left-right asymmetry in single cell and cell collectives. Nat Commun 14, 776 (2023). https://doi.org/10.1038/s41467-023-35918-1
+
 
 Input images: 512 x 512 pixel images of single cells patterned on 1800µm<sup>2</sup> micro-patterns. 
 
